@@ -6,6 +6,7 @@ from src.fishbot.core.game.detector import Detector
 from src.fishbot.core.interceptors.level_check_interceptor import LevelCheckInterceptor
 from src.fishbot.core.state.impl.casting_bait_state import CastingBaitState
 from src.fishbot.core.state.impl.checking_rod_state import CheckingRodState
+from src.fishbot.core.state.impl.checking_bait_state import CheckingBaitState
 from src.fishbot.core.state.impl.finishing_state import FinishingState
 from src.fishbot.core.state.impl.playing_minigame_state import PlayingMinigameState
 from src.fishbot.core.state.impl.starting_state import StartingState
@@ -40,11 +41,11 @@ class FishingBot:
     def _register_states(self):
         self.state_machine.add_state(StateType.STARTING, StartingState(self))
         self.state_machine.add_state(StateType.CHECKING_ROD, CheckingRodState(self))
+        self.state_machine.add_state(StateType.CHECKING_BAIT, CheckingBaitState(self))
         self.state_machine.add_state(StateType.CASTING_BAIT, CastingBaitState(self))
         self.state_machine.add_state(StateType.WAITING_FOR_BITE, WaitingForBiteState(self))
         self.state_machine.add_state(StateType.PLAYING_MINIGAME, PlayingMinigameState(self))
         self.state_machine.add_state(StateType.FINISHING, FinishingState(self))
-
     def start(self):
         log("[INFO] 🎣 Bot ready!")
         log("[INFO] ⚠️ IMPORTANT: Keep the game in FOCUS (active window)")

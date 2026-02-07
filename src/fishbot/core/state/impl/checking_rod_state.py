@@ -37,7 +37,10 @@ class CheckingRodState(BotState):
             time.sleep(0.5)
             self.controller.move_to(x, y)
             time.sleep(0.5)
-            self.controller.click('left')
+            # self.controller.click('left')
+            self.controller.mouse_down('left')
+            time.sleep(0.1)
+            self.controller.mouse_up('left')
             time.sleep(1)
 
             self.bot.log("[CHECKING_ROD] ✅ Rod replaced")
@@ -45,4 +48,4 @@ class CheckingRodState(BotState):
             time.sleep(1)
             self.bot.log("[CHECKING_ROD] ✅ Rod OK")
 
-        return StateType.CASTING_BAIT
+        return StateType.CHECKING_BAIT

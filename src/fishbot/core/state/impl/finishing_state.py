@@ -18,8 +18,11 @@ class FinishingState(BotState):
             self.controller.move_to(pos[0], pos[1])
             time.sleep(0.5)
             self.controller.move_to(pos[0], pos[1])
-            time.sleep(1)
-            self.controller.click('left')
+            time.sleep(0.5)
+            # self.controller.click('left')
+            self.controller.mouse_down('left')
+            time.sleep(0.1)
+            self.controller.mouse_up('left')
 		
 	        # Count one full fishing attempt
             self.bot.stats.increment("cycles")

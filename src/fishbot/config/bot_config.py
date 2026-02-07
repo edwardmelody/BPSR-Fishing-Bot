@@ -10,6 +10,7 @@ class BotConfig:
         self.state_timeouts = {
             "STARTING": 10,
             "CHECKING_ROD": 15,
+            "CHECKING_BAIT": 15,
             "CASTING_BAIT": 15,
             "WAITING_FOR_BITE": 25,
             "PLAYING_MINIGAME": 30,

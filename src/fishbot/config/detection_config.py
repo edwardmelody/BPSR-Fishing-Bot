@@ -9,6 +9,7 @@ class DetectionConfig:
 
         self.templates = {
             "fishing_spot_btn": "fishing_spot_btn.png",
+            "empty_bait": "empty_bait.png",
             "broken_rod": "broken_rod.png",
             "new_rod": "new_rod.png",
             "reg_rod": "reg_pole.png",
@@ -40,6 +41,7 @@ class DetectionConfig:
         #FullHD 1080p Config
         self.rois = {
             "fishing_spot_btn": (1400, 540, 121, 55),
+            "empty_bait": (1369, 982, 240, 60),
             "broken_rod": (1635, 982, 250, 63),
             "reg_rod": (1638, 985, 210, 33),
             "sturdy_rod": (1637, 984, 194, 37),
