@@ -5,12 +5,18 @@ class StatsTracker:
             'fish_caught': 0,
             'fish_escaped': 0,
             'rod_breaks': 0,
+            'bait_replacements': 0,
             'timeouts': 0
         }
 
     def increment(self, stat_name, value=1):
         if stat_name in self.stats:
             self.stats[stat_name] += value
+
+    def get(self, stat_name):
+        if stat_name in self.stats:
+            return self.stats[stat_name]
+        return None
 
     def show(self):
         print("\n" + "=" * 50)

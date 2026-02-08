@@ -30,3 +30,10 @@ class BotConfig:
         self.default_delay = 0.5
         self.finish_wait_delay = 0.5
         self.casting_delay = 0.5
+
+        # Bait replacement settings
+        self.bait_type = 2  # 1 = Regular Bait, 2 = Precise Bait, 3 = Special Bait
+
+        # Maximum allowed rod breaks before stopping the bot
+        self.max_rod_breaks = 50
+        self.rod_type = 2 # 1 = Regular Fishing Pole, 2 = Sturdy Fishing Pole, 3 = Flexible Fishing Pole

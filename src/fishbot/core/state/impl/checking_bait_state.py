@@ -9,7 +9,7 @@ class CheckingBaitState(BotState):
     def handle(self, screen):
         self.bot.log("[CHECKING_BAIT] Checking bait...")
 
-        time.sleep(1)
+        # time.sleep(1)
 
         empty_bait = 0
 
@@ -37,11 +37,16 @@ class CheckingBaitState(BotState):
             self.controller.mouse_up('left')
             time.sleep(0.5)
 
-            # Regular Bait 310
-            # x = 310 + self.window.monitor_x
-            x = 535 + self.window.monitor_x
+            # Regular Bait 
+            x = 310 + self.window.monitor_x
             y = 310 + self.window.monitor_y
-
+            if self.config.bait_type == 2:
+                # Precise Bait
+                x = 535 + self.window.monitor_x
+            elif self.config.bait_type == 3:
+                # Special Bait
+                x = 1005 + self.window.monitor_x
+                
             self.controller.move_to(x, y)
             time.sleep(0.5)
             self.controller.move_to(x, y)
