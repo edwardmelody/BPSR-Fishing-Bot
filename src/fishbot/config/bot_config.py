@@ -34,6 +34,6 @@ class BotConfig:
         # Bait replacement settings
         self.bait_type = 2  # 1 = Regular Bait, 2 = Precise Bait, 3 = Special Bait
 
-        # Maximum allowed rod breaks before stopping the bot
+        # Maximum allowed rod breaks before buy new rod
         self.max_rod_breaks = 50
         self.rod_type = 2 # 1 = Regular Fishing Pole, 2 = Sturdy Fishing Pole, 3 = Flexible Fishing Pole
