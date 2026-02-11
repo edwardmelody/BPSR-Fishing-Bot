@@ -6,8 +6,14 @@ from ..state_type import StateType
 
 class CheckingRodState(BotState):
 
+    def __init__(self, bot):
+        super().__init__(bot)
+        self._last_rod_purchase = 0
+        self._rod_purchase_cooldown = 30  # seconds
+        self._max_rod_breaks = self.config.max_rod_breaks or 50
+
     def _buy_new_rod(self):
-        self.bot.log(f"[CHECKING_ROD] ❌ Maximum rod breaks reached ({self.config.max_rod_breaks}). Buying new rod.")
+        self.bot.log(f"[CHECKING_ROD] ❌ Maximum rod breaks reached ({self._max_rod_breaks}). Buying new rod.")
         self.controller.press_key('b')
         time.sleep(1)
 
@@ -81,11 +87,6 @@ class CheckingRodState(BotState):
 
         time.sleep(1)
 
-        total_rod_breaks = self.bot.stats.get('rod_breaks')
-
-        if total_rod_breaks is not None and total_rod_breaks > 0 and total_rod_breaks % self.config.max_rod_breaks == 0:
-            self._buy_new_rod()
-
         found_rod = 0
 
         if self.detector.find(screen, "flex_rod", 5, debug=True):
@@ -101,6 +102,15 @@ class CheckingRodState(BotState):
             self.bot.log("[CHECKING_ROD] ⚠️  Broken rod! Replacing...")
             self.bot.stats.increment('rod_breaks')
             time.sleep(1)
+
+            total_rod_breaks = self.bot.stats.get_value('rod_breaks')
+            if total_rod_breaks is not None and total_rod_breaks % self._max_rod_breaks == 0:
+                now = time.time()
+                if now - self._last_rod_purchase >= self._rod_purchase_cooldown:
+                    self._buy_new_rod()
+                    self._last_rod_purchase = now
+                else:
+                    self.bot.log("[CHECKING_ROD] ⏳ Skipping rod purchase (cooldown active)")
 
             self.controller.press_key('m')
             time.sleep(1)

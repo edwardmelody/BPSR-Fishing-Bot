@@ -13,7 +13,7 @@ class StatsTracker:
         if stat_name in self.stats:
             self.stats[stat_name] += value
 
-    def get(self, stat_name):
+    def get_value(self, stat_name):
         if stat_name in self.stats:
             return self.stats[stat_name]
         return None
