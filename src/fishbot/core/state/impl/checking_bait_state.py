@@ -45,7 +45,7 @@ class CheckingBaitState(BotState):
                 x = 535 + self.window.monitor_x
             elif self.config.bait_type == 3:
                 # Special Bait
-                x = 1005 + self.window.monitor_x
+                x = 775 + self.window.monitor_x
                 
             self.controller.move_to(x, y)
             time.sleep(0.5)

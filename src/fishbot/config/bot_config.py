@@ -32,8 +32,9 @@ class BotConfig:
         self.casting_delay = 0.5
 
         # Bait replacement settings
-        self.bait_type = 2  # 1 = Regular Bait, 2 = Precise Bait, 3 = Special Bait
+        self.unlocked_special_bait = False  # Set to True if the user has unlocked special bait
+        self.bait_type = 1  # 1 = Regular Bait, 2 = Precise Bait, 3 = Special Bait
 
         # Maximum allowed rod breaks before buy new rod
         self.max_rod_breaks = 50
-        self.rod_type = 2 # 1 = Regular Fishing Pole, 2 = Sturdy Fishing Pole, 3 = Flexible Fishing Pole
+        self.rod_type = 1 # 1 = Regular Fishing Pole, 2 = Sturdy Fishing Pole, 3 = Flexible Fishing Pole

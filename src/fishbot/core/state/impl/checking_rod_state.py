@@ -13,6 +13,7 @@ class CheckingRodState(BotState):
 
     def _buy_new_rod(self):
         self.bot.log(f"[CHECKING_ROD] ❌ Maximum rod breaks reached ({self._max_rod_breaks}). Buying new rod.")
+        self.bot.stats.increment('rod_bought')
         self.controller.press_key('b')
         time.sleep(1)
 
@@ -33,6 +34,8 @@ class CheckingRodState(BotState):
 
         # Regular Rod 
         x = 775 + self.window.monitor_x
+        if self.config.unlocked_special_bait == True:
+            x = 1010 + self.window.monitor_x
         y = 310 + self.window.monitor_y
         if self.config.rod_type == 2:
             # Sturdy Rod
